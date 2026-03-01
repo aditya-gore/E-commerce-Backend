@@ -1,0 +1,107 @@
+spring:
+  application:
+    name: scalecart
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoint:
+    health:
+      show-details: when-authorized
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+---
+# Dev profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:scalecart;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: scalecart-capstone
+      auto-offset-reset: earliest
+    admin:
+      auto-create: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
+
+app:
+  cache:
+    redis:
+      enabled: false
+  kafka:
+    enabled: false
+  jwt:
+    secret: ${APP_JWT_SECRET:ScaleCartCapstoneJwtSecretKeyForSigningMustBeAtLeast256BitsLongForHS256}
+    expiration-ms: 3600000
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.scalecart: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{traceId:-}] %-5level %logger{36} - %msg%n"
+
+---
+# Prod profile: PostgreSQL, Redis, Kafka from env
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/scalecart}
+    username: ${SPRING_DATASOURCE_USERNAME:scalecart}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+
+app:
+  cache:
+    redis:
+      enabled: true
+  kafka:
+    enabled: true
+  jwt:
+    secret: ${APP_JWT_SECRET}
+    expiration-ms: ${APP_JWT_EXPIRATION_MS:3600000}
+
+logging:
+  level:
+    root: INFO
+    com.scalecart: INFO

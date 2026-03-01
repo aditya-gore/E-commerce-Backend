@@ -1,0 +1,28 @@
+# Build
+target/
+*.jar
+*.war
+*.ear
+*.class
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Application
+application-local.properties
+application-local.yml
+*.env
+.env
