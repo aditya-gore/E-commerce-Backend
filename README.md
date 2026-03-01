@@ -1,4 +1,4 @@
-# ScaleCart Capstone — Production-Grade Backend
+# ScaleCart — Production-Grade Backend
 
 **ScaleCart** is a single, runnable, production-style e-commerce backend built with Spring Boot. It demonstrates REST APIs, JPA persistence, JWT security, Redis caching, async processing, and Kafka messaging in one deployable codebase — suitable as a resume project and for local or containerized runs.
 
