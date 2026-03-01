@@ -1,6 +1,6 @@
 # ScaleCart — Production-Grade Backend
 
-**ScaleCart** is a single, runnable, production-style e-commerce backend built with Spring Boot. It demonstrates REST APIs, JPA persistence, JWT security, Redis caching, async processing, and Kafka messaging in one deployable codebase — suitable as a resume project and for local or containerized runs.
+**ScaleCart** is a single, runnable, production-style e-commerce backend built with Spring Boot. It demonstrates REST APIs, JPA persistence, JWT security, Redis caching, async processing, and Kafka messaging in one deployable codebase.
 
 **Tech stack:** Java 21, Spring Boot 3.2.x, Spring Data JPA, Spring Security (JWT), Spring Cache (Redis with in-memory fallback), Spring Kafka, Actuator (health, metrics), SpringDoc OpenAPI, H2 (dev) / PostgreSQL (prod), Docker.
 
