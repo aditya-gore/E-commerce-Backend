@@ -21,6 +21,9 @@ target/
 .DS_Store
 Thumbs.db
 
+# Interview / local notes (not for repo)
+INTERVIEW-*.md
+
 # Application
 application-local.properties
 application-local.yml
