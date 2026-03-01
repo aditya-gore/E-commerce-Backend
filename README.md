@@ -72,7 +72,7 @@ Authorization: Bearer <token>
 
 - **Docker:** Build the image from the Dockerfile (multi-stage build, JRE 21, non-root user). Build context is the capstone directory.
 - **Compose:** Use the included `docker-compose.yml` for app + Postgres + Redis + Kafka; configure env vars for production secrets.
-- **Kubernetes:** Use health endpoints `/actuator/health/liveness` and `/actuator/health/readiness` for probes; patterns from [08-deployment](../08-deployment) can be reused.
+- **Kubernetes:** Use health endpoints `/actuator/health/liveness` and `/actuator/health/readiness`
 
 ---
 
@@ -82,7 +82,4 @@ Authorization: Bearer <token>
 |----------|-------------|
 | [ARCHITECTURE.md](ARCHITECTURE.md) | High-level architecture and capstone application layout |
 | [PRODUCTION.md](PRODUCTION.md) | Production readiness checklist; capstone app is the reference implementation |
-| [INTERVIEW-SDE2.md](INTERVIEW-SDE2.md) | SDE-2 interview themes and discussion points |
-| [INTERVIEW-FAQ.md](INTERVIEW-FAQ.md) | Capstone-specific interview Q&A (project walkthrough, design, scaling) |
 
-For deeper learning, see modules [01-core-concepts](../01-core-concepts) through [08-deployment](../08-deployment).
